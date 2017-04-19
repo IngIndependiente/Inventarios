@@ -5,11 +5,7 @@ if(isset($_GET['input']))       { $input_output = 'input';  }
 else if(isset($_GET['output'])) { $input_output = 'output'; }
 else { alert_box('alert', get_lang('No hay valor de entrada o salida')); exit;  }
 ?>
-<?php
-  $timezone = "Chile/Continental";
-  date_default_timezone_set($timezone);
-  $today = date("Y-m-d");
-?>
+
 <?php
 $shelf = '';
 if(isset($_POST['btn_submit']))
@@ -138,8 +134,14 @@ if(isset($_POST['btn_submit']))
                     <option value="<?php lang($lote3); ?>"><?php echo $lote3; ?></option>
                     </select><br><br>
 
+<?php
+  $timezone = "Chile/Continental";
+  date_default_timezone_set($timezone);
+  $today = date("Y-m-d");
 
-                     <input ng-model="date" type="date" name="fechain" id="fechain"  maxlength="11" minlength="2" value="<?php echo $today; ?>" />
+
+?>
+                    <input type="date" name="fechain" id="fechain" value="<?php echo $today ?>" /><br><br>
 
                     
                 </div>

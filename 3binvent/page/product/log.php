@@ -17,7 +17,7 @@
 	</thead>
     <tbody>
     <?php
-	$query_log = mysql_query("SELECT * FROM $database->log ORDER BY date DESC");
+	$query_log = mysql_query("SELECT * FROM $database->log ORDER BY id DESC");
 	while($list_log = mysql_fetch_assoc($query_log))
 	{
 
