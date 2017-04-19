@@ -3,8 +3,27 @@
 <?php
 	mysql_query("DELETE FROM $database->product_amount WHERE amount='0'");
 	
-	if(isset($_GET['product_id'])){ $product_id = safety_filter($_GET['product_id']);	}
+	if(isset($_post['date_tran']))
+		{ 
+			$product_id = safety_filter($_GET['product_id']);
+			$id = safety_filter($_GET['id']);
+
+		}
 ?>
+
+<?php 
+$expire = date('Y/m/d');
+$text = "Fecha ";
+echo $text;
+echo $expire;
+	if(isset($_POST['expire'])) 
+		{ 
+			$expire = safety_filter($_POST['expire']); 
+			$query = "INSERT INTO $database->product_amount (date_tran) VALUES ('$expire') WHERE id = '$id';";
+			mysql_query($query);
+		}
+
+ ?>
 
 <table class="datatable">
 	<thead>
@@ -12,8 +31,8 @@
         	<th width="1"></th>
             <th><?php lang('Nombre de la muestra'); ?></th>
             <th><?php lang('Lote'); ?></th>
-            <th class="text-right"><?php lang('Lote / Total'); ?></th>
-             <th class="text-right"><?php lang('Vencimiento'); ?></th>
+            <th class=""><?php lang('# Lote / # Total'); ?></th>
+             <th class=""><?php lang('Fecha Vencimiento'); ?></th>
            
 
         </tr>
@@ -42,9 +61,10 @@
 			<td></td>
 			<td>'.getNombre($product_amount['product_id']).'</td>
 			<td>'.$product_amount['shelf'].'</td>
-			<td class="text-right">[ '.$product_amount['amount'].''." / ".''.get_calc_amount($product_amount['product_id']).' ]</td>
+			<td class="text-left">[ '.$product_amount['amount'].''." / ".''.get_calc_amount($product_amount['product_id']).' ]</td>
 		
-			<td>'.$product_amount['date_tran'].'</td>
+			<td > <form action = "lote.php" name = "expire" method ="post" ><input style="width: 200" type="date" name="" value="" placeholder="'.$product_amount['date_tran'].'"> <input style="width: 200" type="submit" name="submit" hidden> <form>
+			</td>
 		</tr>
 		';
 		

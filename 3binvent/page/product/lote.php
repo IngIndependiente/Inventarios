@@ -5,15 +5,21 @@
 	
 	if(isset($_GET['product_id'])){ $product_id = safety_filter($_GET['product_id']);	}
 ?>
+<?php 
+$expire = date('d/m/Y');
+$text = "Fecha ";
+echo $text;
+echo  $expire;
 
-<table class="datatable">
+ ?>
+<table class="datatable"><br><br>
 	<thead>
     	<tr>
         	<th width="1"></th>
             <th><?php lang('Nombre del producto'); ?></th>
             <th><?php lang('Lote'); ?></th>
-            <th class="text-right"><?php lang('Lote / Total'); ?></th>
-             <th class="text-right"><?php lang('Vencimiento'); ?></th>
+            <th class=""><?php lang('# Lote / # Total'); ?></th>
+             <th class=""><?php lang('Vencimiento'); ?></th>
            
 
         </tr>
@@ -42,9 +48,10 @@
 			<td></td>
 			<td>'.getNombre($product_amount['product_id']).'</td>
 			<td>'.$product_amount['shelf'].'</td>
-			<td class="text-right">[ '.$product_amount['amount'].''." / ".''.get_calc_amount($product_amount['product_id']).' ]</td>
+			<td class="text-left">[ '.$product_amount['amount'].''." / ".''.get_calc_amount($product_amount['product_id']).' ]</td>
 		
-			<td>'.$product_amount['date_tran'].'</td>
+			<td> <form action = "lote.php" name = "expire" method ="post" ><input style="width: 200" type="date" name="" value="" placeholder="'.$product_amount['date_tran'].'"> <input style="width: 200" type="submit" name="submit" hidden> <form>
+			</td>
 		</tr>
 		';
 		

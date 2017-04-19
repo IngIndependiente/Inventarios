@@ -112,7 +112,7 @@ if(isset($_POST['btn_submit']))
                 <div class="three columns">
                 
                     <label for="amount"><?php lang(); ?></label><br><br>
-                    <input  type="text" name="amount" id="amount" required="" ng-model ="amount" placeholder="<?php lang('Amount'); ?>" required/>
+                    <input  type="text" name="amount" id="amount" required="" ng-model ="amount" placeholder="0" required/>
              
 
        
