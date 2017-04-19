@@ -117,34 +117,28 @@ if(isset($_POST['btn_submit']))
                 
                     <label for="amount"><?php lang(); ?></label><br><br>
                     <input  type="text" name="amount" id="amount" required="" ng-model ="amount" placeholder="<?php lang('Amount'); ?>" required/>
-                    <input type="text" name="shelf" id="shelf" maxlength="1000" placeholder="<?php lang('Lote'); ?>" required />
              
 
        
-    <?php 
-    if ($input_output == 'input') {
-        $m1="Ingreso de Stock";
-        $m2="Devolución Externos";
-        $m3="Devolución Interna";
-        $m4="Otro";
-    }; 
-    if ($input_output == 'output') {
-        $m1="Agotado";
-        $m2="Préstamo Externos";
-        $m3="Préstamo Interno";
-        $m4="Otro";
-    }{
+  <?php 
+        $lote1    = "Lote 1";
+        $lote2    = "Lote 2";
+        $lote3    = "Lote 3";
+        $almacen1 = "Almacen 1";
+        $almacen2 = "Almacen 2";
+        $almacen3 = "Almacen 3";
         
-    };
+    
+        
+  
      ?>
-                    <select name="note" id="note">
+                    <select name="shelf" id="shelf">
+                    <option value="<?php lang($lote1); ?>"><?php echo $lote1; ?></option>
+                    <option value="<?php lang($lote2); ?>"><?php echo $lote2; ?></option>
+                    <option value="<?php lang($lote3); ?>"><?php echo $lote3; ?></option>
+                    </select><br><br>
 
-                     <option value="<?php lang($m1); ?>"><?php echo $m1; ?></option>
-                     <option value="<?php lang($m2); ?>"><?php echo $m2; ?></option>
-                     <option value="<?php lang($m3); ?>"><?php echo $m3; ?></option>
-                     <option value="<?php lang($m4); ?>"><?php echo $m4; ?></option>
 
-                     </select><br><br>
                      <input ng-model="date" type="date" name="fechain" id="fechain"  maxlength="11" minlength="2" value="<?php echo $today; ?>" />
 
                     

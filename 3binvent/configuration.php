@@ -7,7 +7,7 @@
 			$db_user_name = 'root';
 			$db_password = 'root';
 			$prefix = '';
-			$url = 'http://localhost:8888/Inventario/3binvent';
+			$url = 'http://localhost:8888/Inventario/3binvent/';
 			$language = 'english.php';
 			?>
 			

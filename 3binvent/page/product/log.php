@@ -11,7 +11,7 @@
             <th><?php lang('Nombre'); ?></th>
             <th><?php lang('Tipo'); ?></th>
             <th><?php lang('Operación'); ?></th>
-            <th><?php lang('Recordatorio'); ?></th>
+          
 
 		</tr>
 	</thead>
@@ -33,7 +33,7 @@
 			<td>'.getNombre($list_log['product_id']).'</td>
 			<td>'.get_lang($list_log['type']).'</td>
 			<td>'.$list_log['text'].'</td>
-			<td>'.$list_log['note'].'</td>
+		
 		</tr>
 
 		

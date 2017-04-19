@@ -12,8 +12,7 @@
         	<th width="1"></th>
             <th><?php lang('Nombre del producto'); ?></th>
             <th><?php lang('Lote'); ?></th>
-            <th class="text-right"><?php lang('Amount'); ?></th>
-            <th class="text-right"><?php lang('Total'); ?></th>
+            <th class="text-right"><?php lang('Lote / Total'); ?></th>
              <th class="text-right"><?php lang('Vencimiento'); ?></th>
            
 
@@ -38,8 +37,8 @@
 			<td></td>
 			<td>'.getNombre($product_amount['product_id']).'</td>
 			<td>'.$product_amount['shelf'].'</td>
-			<td class="text-right">'.$product_amount['amount'].'</td>
-			<td class="text-right">'.get_calc_amount($product_amount['product_id']).'</td>
+			<td class="text-right">[ '.$product_amount['amount'].''." / ".''.get_calc_amount($product_amount['product_id']).' ]</td>
+			<td colspan="" rowspan="" headers=""></td>
 			<td>'.$product_amount['date_tran'].'</td>
 		</tr>
 		';
