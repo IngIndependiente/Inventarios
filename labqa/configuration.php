@@ -3,11 +3,11 @@
 			MYSQL DATABASE SETTINGS
 			---------------------------------------------- */
 			$db_host = 'localhost'; 
-			$db_name = 'thesolve_labqa';
-			$db_user_name = 'thesolve_labqa';
-			$db_password = 'Epicrouter@';
+			$db_name = 'stock';
+			$db_user_name = 'root';
+			$db_password = 'root';
 			$prefix = '';
-			$url = 'http://labqa.thesolve.cl';
+			$url = 'http://localhost:8888/Inventario/labqa';
 			$language = 'english.php';
 			?>
 			
