@@ -271,20 +271,22 @@ function product_amount($input_output, $product_id, $shelf, $amount, $fechain, $
 			{
 				$old_amount = $list_amount['amount'];	
 			}
-			$new_amount = $amount + $old_amount;
+			
+				$new_amount = $amount + $old_amount;
 			
 			add_log($fechain, get_the_current_user('id'), $product_id, $input_output, "[$old_amount]+[$amount]=[$new_amount]", $note);
 			
 			$update = mysql_query("UPDATE $database->product_amount SET
 			amount=amount + $amount
-			WHERE product_id='$product_id' AND shelf='$shelf'");
+			WHERE product_id='$product_id' AND shelf='$shelf' AND shelf!=''");
+
 			if(mysql_affected_rows() > 0){return true;	}
 			else { if($update == true){ return true; } else { return false; } }
 		}
 		else
 		{
 			mysql_query("INSERT INTO $database->product_amount (product_id, shelf, amount) VALUES ('$product_id', '$shelf', '$amount')");
-			if(mysql_affected_rows() > 0){ add_log($fechain, get_the_current_user('id'), $product_id, $input_output, "[0]+[$amount]=[$amount]", $date); return true; }
+			if(mysql_affected_rows() > 0){ add_log($fechain, get_the_current_user('id'), $product_id, $input_output, "[0]+[$amount]=[$amount]", $note); return true; }
 			else{ return false; }
 		}	
 	}
@@ -298,21 +300,24 @@ function product_amount($input_output, $product_id, $shelf, $amount, $fechain, $
 				$old_amount = $list_amount['amount'];	
 			}
 			$new_amount = $old_amount - $amount;
+			if ($new_amount < 0) {
+				alert_box('alert','No tiene productos suficientes en este lote');
+				exit;
+			}else{
+
 			
 			add_log($fechain, get_the_current_user('id'), $product_id, $input_output, "[$old_amount]-[$amount]=[$new_amount]", $note);
 			
 			$update = mysql_query("UPDATE $database->product_amount SET
 			amount=amount - $amount
 			WHERE product_id='$product_id' AND shelf='$shelf'");
+		}
 			if(mysql_affected_rows() > 0){return true;	}
 			else { if($update == true){ return true; } else { return false; } }
 		}
 		else
 		{
-			$amount = $amount - ($amount * 2);
-			mysql_query("INSERT INTO $database->product_amount (product_id, shelf, amount) VALUES ('$product_id', '$shelf', '$amount')");
-			if(mysql_affected_rows() > 0){ add_log($fechain, get_the_current_user('id'), $product_id, $input_output, "[0]-[$amount]=[$amount]", $note); return true; }
-			else{ return false; }
+			alert_box('alert','Primero debe hacer un ingreso a este lote');
 		}	
 	}
 }

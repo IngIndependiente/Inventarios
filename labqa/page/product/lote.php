@@ -1,7 +1,7 @@
 <?php include_once('../../header.php'); ?>
 
 <?php
-	mysql_query("DELETE FROM $database->product_amount WHERE amount<='0'");
+	mysql_query("DELETE FROM $database->product_amount WHERE amount='0'");
 	
 	if(isset($_GET['product_id'])){ $product_id = safety_filter($_GET['product_id']);	}
 ?>
@@ -10,11 +10,10 @@
 	<thead>
     	<tr>
         	<th width="1"></th>
-            <th><?php lang('Nombre del producto'); ?></th>
+            <th><?php lang('Nombre de la muestra'); ?></th>
             <th><?php lang('Lote'); ?></th>
-            <th class="text-right"><?php lang('Amount'); ?></th>
-            <th class="text-right"><?php lang('Total'); ?></th>
-             <th class="text-right"><?php lang('Vencimiento (Pronto)'); ?></th>
+            <th class="text-right"><?php lang('Lote / Total'); ?></th>
+             <th class="text-right"><?php lang('Vencimiento'); ?></th>
            
 
         </tr>
@@ -32,14 +31,19 @@
 		$product_amount['amount'] 		= $list_product_amount['amount'];
 		$product_amount['date_tran'] 	= $list_product_amount['date_tran'];
 		
+
+
+
+//Agregar link para editar fecha de caducidad del lote
+
 		
 		echo '
 		<tr>
 			<td></td>
 			<td>'.getNombre($product_amount['product_id']).'</td>
 			<td>'.$product_amount['shelf'].'</td>
-			<td class="text-right">'.$product_amount['amount'].'</td>
-			<td class="text-right">'.get_calc_amount($product_amount['product_id']).'</td>
+			<td class="text-right">[ '.$product_amount['amount'].''." / ".''.get_calc_amount($product_amount['product_id']).' ]</td>
+		
 			<td>'.$product_amount['date_tran'].'</td>
 		</tr>
 		';

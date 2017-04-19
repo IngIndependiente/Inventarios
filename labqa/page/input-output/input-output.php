@@ -117,7 +117,6 @@ if(isset($_POST['btn_submit']))
                 
                     <label for="amount"><?php lang(); ?></label><br><br>
                     <input  type="text" name="amount" id="amount" required="" ng-model ="amount" placeholder="<?php lang('Amount'); ?>" required/>
-                    <input type="text" name="shelf" id="shelf" maxlength="1000" placeholder="<?php lang('Lote'); ?>" required />
              
 
        
@@ -137,6 +136,23 @@ if(isset($_POST['btn_submit']))
         
     };
      ?>
+     <?php 
+        $lote1    = "Lote 1";
+        $lote2    = "Lote 2";
+        $lote3    = "Lote 3";
+        $almacen1 = "Almacen 1";
+        $almacen2 = "Almacen 2";
+        $almacen3 = "Almacen 3";
+        
+    
+        
+  
+     ?>
+                    <select name="shelf" id="shelf">
+                    <option value="<?php lang($lote1); ?>"><?php echo $lote1; ?></option>
+                    <option value="<?php lang($lote2); ?>"><?php echo $lote2; ?></option>
+                    <option value="<?php lang($lote3); ?>"><?php echo $lote3; ?></option>
+                    </select><br><br>
                     <select name="note" id="note">
 
                      <option value="<?php lang($m1); ?>"><?php echo $m1; ?></option>

@@ -36,7 +36,7 @@
 		$amount = get_calc_amount($products['id']);
 		
 		if ($amount == 0 ) {
-			$color = "green";
+			$color = "red";
 			$note = $amount;
 			
 		}
@@ -76,6 +76,8 @@
 	?>
     </tbody>
 </table>
-
+<div class="ten row">
+	<img align="right" width="400" src="<?php url('theme'); ?>/images/product_list.png" />
+</div>
 
 <?php include_once('../../footer.php'); ?>

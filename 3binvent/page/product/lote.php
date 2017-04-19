@@ -31,6 +31,11 @@
 		$product_amount['amount'] 		= $list_product_amount['amount'];
 		$product_amount['date_tran'] 	= $list_product_amount['date_tran'];
 		
+
+
+
+//Agregar link para editar fecha de caducidad del lote
+
 		
 		echo '
 		<tr>
@@ -38,7 +43,7 @@
 			<td>'.getNombre($product_amount['product_id']).'</td>
 			<td>'.$product_amount['shelf'].'</td>
 			<td class="text-right">[ '.$product_amount['amount'].''." / ".''.get_calc_amount($product_amount['product_id']).' ]</td>
-			<td colspan="" rowspan="" headers=""></td>
+		
 			<td>'.$product_amount['date_tran'].'</td>
 		</tr>
 		';
